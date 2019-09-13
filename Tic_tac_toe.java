@@ -16,7 +16,7 @@ class Tic_tac_toe
 		}
 		if((a[0][0].equals(a[1][1]))&&(a[1][1].equals(a[2][2])))
 			ping++;
-		if((a[0][2].equals(a[1][1]))&&(a[1][1].equals(a[0][2])))
+		if((a[0][2].equals(a[1][1]))&&(a[1][1].equals(a[2][0])))
 			ping++;
 		if(ping==0)
 			return false;
