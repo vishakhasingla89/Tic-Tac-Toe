@@ -48,7 +48,7 @@ class Tic_tac_toe
 		{
 			for(j=0;j<3;j++)
 			{
-								if(j==2)
+			     if(j==2)
 				System.out.print("   "+a[i][j]);
 			     else
 					 System.out.print("  "+a[i][j]+"  |");
@@ -59,62 +59,96 @@ class Tic_tac_toe
 			System.out.println("---------------------");
 			}
 		}
+		count=0;
+		int arr[]=new int[10];
 		while(flag==false)
 		{
-		if(flag1==1)
-		{
-			System.out.println();
-		System.out.print("Player 1's turn:");
-		p1=sc.nextInt();
-		flag1=0;
-		}
-		else
-		{
-			System.out.println();
-			System.out.print("Player 2's turn:");
-			p1=sc.nextInt();
-			flag1=1;
-		}
-		String s1=String.valueOf(p1);
+			if(count>=9)
+                        {
+				System.out.println("\nGAME DRAW");
+				break;
+			}
+			count++;
 		
-		for(i=0;i<3;i++)
-		{
-			for(j=0;j<3;j++)
+			if(flag1==1)
 			{
-				if(a[i][j].equals(s1))
+
+                                while(true)
 				{
-					if(flag1==0)
-					a[i][j]=t1;
-				    else
-					a[i][j]=t2;
+				System.out.print("\nPlayer 1's turn:");
+				p1=sc.nextInt();
+                                if((p1<1)||(p1>9))
+					System.out.println("Please enter a valid number");
+                                else if(arr[p1]==1)
+                                	System.out.println("This place is already taken");
+				else
+				{
+					arr[p1]=1;
+					break;
+				}
+                                }
+				
+				flag1=0;
+			}
+			else
+			{
+				while(true)
+				{
+				System.out.print("\nPlayer 2's turn:");
+				p1=sc.nextInt();
+                                if((p1<1)||(p1>9))
+					System.out.println("Please enter a valid number");
+                                else if(arr[p1]==1)
+                                	System.out.println("This place is already taken");
+				else
+				{
+					arr[p1]=1;
+					break;
+				}
+                                }
+				
+				
+				flag1=1;
+			}
+			String s1=String.valueOf(p1);
+			for(i=0;i<3;i++)
+			{
+				for(j=0;j<3;j++)
+				{
+					if(a[i][j].equals(s1))
+					{
+						if(flag1==0)
+						a[i][j]=t1;
+				       		else
+						a[i][j]=t2;
+					}
 				}
 			}
-		}
-		for(i=0;i<3;i++)
-		{
-			for(j=0;j<3;j++)
+			for(i=0;i<3;i++)
 			{
-				if(j==2)
-				System.out.print("   "+a[i][j]);
-			     else
-					 System.out.print("  "+a[i][j]+"  |");
+				for(j=0;j<3;j++)
+				{
+					if(j==2)
+					System.out.print("   "+a[i][j]);
+			     		else
+					System.out.print("  "+a[i][j]+"  |");
+				}
+				if(i!=2)
+				{
+				System.out.println();
+				System.out.println("---------------------");
+				}
 			}
-			if(i!=2)
+			flag=check_win(a);
+			if(flag==true)
 			{
 				System.out.println();
-			System.out.println("---------------------");
-			}
-		}
-		flag=check_win(a);
-		if(flag==true)
-		{
-			System.out.println();
 		
-			if(flag1==0)
-				System.out.println("PLAYER 1 IS THE WINNER");
-			else
-				System.out.println("PLAYER 2 IS THE WINNER");
-		}
+				if(flag1==0)
+					System.out.println("PLAYER 1 IS THE WINNER");
+				else
+					System.out.println("PLAYER 2 IS THE WINNER");
+			}
 		}
 		
 	}
